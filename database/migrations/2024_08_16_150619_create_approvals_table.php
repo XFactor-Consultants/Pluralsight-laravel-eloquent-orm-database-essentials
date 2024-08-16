@@ -11,16 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_info', function (Blueprint $table) {
+        Schema::create('approvals', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->boolean('admin')->nullable()->default(false);
+            $table->foreignId('entry_id')->constrained('entries');
+            $table->timestamps();
         });
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
     }
 
     /**
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_info');
+        Schema::dropIfExists('approvals');
     }
 };

@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('approvals', function (Blueprint $table) {
+        Schema::create('entries', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('entries_id')->constrained('entries');
+            $table->foreignId('job_id')->constrained('job_codes');
+            $table->date('entry_date');
+            $table->decimal('hours', total: 3, places: 1);
+            $table->tinyText('description');
             $table->timestamps();
         });
     }
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('approvals');
+        Schema::dropIfExists('entries');
     }
 };

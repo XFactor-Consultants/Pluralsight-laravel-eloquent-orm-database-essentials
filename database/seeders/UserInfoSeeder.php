@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 
@@ -13,20 +14,24 @@ class UserInfoSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('user_info')->insert([
-            'user_id' => User::factory()->create([
+        DB::table('user_infos')->insert([
+            'user_id'=> User::factory()->create([
                 'name' => 'Normal User',
-                'email' => 'user@example.com',
+                'email' => 'user@example.com'
             ])->id,
-            'admin' => false
+            'admin' => false,
+            'created_at' => date('Y/m/d H:i:s'),
+            'updated_at' => date('Y/m/d H:i:s'),
         ]);
 
-        DB::table('user_info')->insert([
-            'user_id' => User::factory()->create([
+        DB::table('user_infos')->insert([
+            'user_id'=> User::factory()->create([
                 'name' => 'Admin',
-                'email' => 'admin@example.com',
+                'email' => 'admin@example.com'
             ])->id,
-            'admin' => true
+            'admin' => true,
+            'created_at' => date('Y/m/d H:i:s'),
+            'updated_at' => date('Y/m/d H:i:s'),
         ]);
     }
 }

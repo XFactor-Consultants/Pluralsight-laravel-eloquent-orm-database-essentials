@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('job_codes', function (Blueprint $table) {
+        Schema::create('user_infos', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('billing_code');
+            $table->foreignId('user_id')->constrained('users')->unique();
+            $table->boolean('admin')->nullable()->default(false);
+            $table->timestamps();
         });
     }
 
@@ -23,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('job_codes');
+        Schema::dropIfExists('user_infos');
     }
 };

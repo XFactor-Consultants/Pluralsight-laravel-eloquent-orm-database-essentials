@@ -7,7 +7,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 
-class ApprovalsSeeder extends Seeder
+class ApprovalSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,10 +17,10 @@ class ApprovalsSeeder extends Seeder
         $faker = Faker::create();
 
         foreach (range(1, 20) as $index) {
-            if ($faker->numberBetween(0,1) == 1) {
-                DB::table('approvals')->insert([
+            if ($faker->numberBetween(0, 1) == 1) {
+                DB::table('approvals')-> insert([
                     'user_id' => 1,
-                    'entries_id' => $index,
+                    'entry_id' => $index,
                     'created_at' => $faker->dateTimeThisYear(),
                     'updated_at' => $faker->dateTimeThisYear(),
                 ]);

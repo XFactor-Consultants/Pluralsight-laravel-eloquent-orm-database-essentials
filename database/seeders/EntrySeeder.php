@@ -7,7 +7,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 
-class EntriesSeeder extends Seeder
+class EntrySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,7 +18,7 @@ class EntriesSeeder extends Seeder
 
         foreach (range(1, 20) as $index) {
             DB::table('entries')->insert([
-                'user_entry_id' => $faker->numberBetween(1, 2),
+                'user_id' => $faker->numberBetween(1, 2),
                 'job_id' => $faker->numberBetween(1, 4),
                 'entry_date' => $faker->dateTimeThisYear(),
                 'hours' => ($faker->numberBetween(10, 250)) / 10,
