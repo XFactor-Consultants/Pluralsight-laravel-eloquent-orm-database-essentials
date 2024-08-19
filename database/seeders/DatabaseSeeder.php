@@ -21,11 +21,10 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            // UserSeeder::class,
             UserInfoSeeder::class,
-            JobCodesSeeder::class,
-            EntriesSeeder::class,
-            ApprovalsSeeder::class,
+            JobCodeSeeder::class,
+            EntrySeeder::class,
+            ApprovalSeeder::class,
         ]);
     }
 }
