@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Approval extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'entry_id',
+        'user_id',
+    ];
 }

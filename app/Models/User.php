@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -43,5 +45,29 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Get the extended user info.
+     *
+     * @return App\UserInfo
+     */
+    public function info(): HasOne
+    {
+        return $this->hasOne(UserInfo::class);
+    }
+
+    public function isAdmin() {
+        return $this->info->admin;
+    }
+
+    /**
+     * Get all of the entries for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function entries(): HasMany
+    {
+        return $this->hasMany(Entry::class);
     }
 }
