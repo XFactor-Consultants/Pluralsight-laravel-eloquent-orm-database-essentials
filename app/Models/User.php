@@ -34,6 +34,18 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function($user)
+        {
+            UserInfo::create([
+                'user_id' => $user->id,
+            ]);
+        });
+    }
+
     /**
      * Get the attributes that should be cast.
      *
@@ -70,4 +82,6 @@ class User extends Authenticatable
     {
         return $this->hasMany(Entry::class);
     }
+
+
 }
