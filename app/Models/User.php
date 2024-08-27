@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Entry;
+use App\Models\UserInfo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -60,9 +62,9 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the extended user info.
+     * Get the info associated with the User
      *
-     * @return App\UserInfo
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function info(): HasOne
     {
@@ -82,6 +84,4 @@ class User extends Authenticatable
     {
         return $this->hasMany(Entry::class);
     }
-
-
 }

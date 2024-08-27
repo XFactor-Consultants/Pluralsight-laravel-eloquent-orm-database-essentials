@@ -15,11 +15,13 @@ class UserInfo extends Model
         'admin'
     ];
 
-    public function user(): BelongsTo {
+    /**
+     * Get the user that owns the UserInfo
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user(): BelongsTo
+    {
         return $this->belongsTo(User::class);
-    }
-
-    public function entry(): BelongsTo {
-        return $this->belongsTo(Entry::class);
     }
 }

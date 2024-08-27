@@ -13,5 +13,4 @@ class JobCode extends Model
         'name',
         'billing_code',
     ];
-
 }
