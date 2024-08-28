@@ -27,4 +27,5 @@ class UserController extends Controller
         $user->save();
 
         return back()->withSuccess('Information has been updated.');
-    }}
+    }
+}
