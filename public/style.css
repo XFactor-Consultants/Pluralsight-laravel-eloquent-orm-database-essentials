@@ -59,6 +59,16 @@ label + button {
   color: red;
 }
 
+.warning {
+  font-weight: bold;
+  color: darkorange;
+}
+
+.success {
+  font-weight: bold;
+  color: green;
+}
+
 table, td, th {
   border: 1px solid black;
   border-collapse: collapse;
