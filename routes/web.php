@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function() {
     Route::view('/', 'index')->name('home');
-    Route::view('/entry', 'entry')->name('entry');
+    Route::view('/entries', 'entries')->name('entries');
     Route::view('/settings', 'settings')->name('settings');
     Route::post('/settings', [UserController::class, 'save']);
     Route::get('/logout', [AuthController::class, 'logout']);
