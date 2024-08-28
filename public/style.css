@@ -1,11 +1,12 @@
 body {
   font-family: sans-serif;
+  font-size: 18px;
 }
 
 header,
 main,
 footer {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -50,10 +51,14 @@ input,
 textarea,
 select {
   display: block;
+  font-size: 1rem;
 }
 label + label,
 label + button {
   margin-top: 1em;
+}
+button {
+  font-size: 1rem;
 }
 
 .error {
