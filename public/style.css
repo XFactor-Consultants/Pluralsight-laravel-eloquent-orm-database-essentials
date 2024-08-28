@@ -46,7 +46,9 @@ form {
 label {
   display: block;
 }
-label input {
+input,
+textarea,
+select {
   display: block;
 }
 label + label,

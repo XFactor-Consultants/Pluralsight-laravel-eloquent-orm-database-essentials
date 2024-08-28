@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EntryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -12,9 +12,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function() {
     Route::view('/', 'index')->name('home');
+
     Route::view('/entries', 'entries')->name('entries');
+
+    Route::view('/entry', 'entry')->name('entry');
+    Route::post('/entry/add', [EntryController::class, 'add']);
+    Route::post('/entry/edit', [EntryController::class, 'edit']);
+    Route::get('/entry/delete', [EntryController::class, 'delete']);
+
     Route::view('/settings', 'settings')->name('settings');
     Route::post('/settings', [UserController::class, 'save']);
+
     Route::get('/logout', [AuthController::class, 'logout']);
 });
 

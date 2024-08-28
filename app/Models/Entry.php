@@ -2,14 +2,12 @@
 
 namespace App\Models;
 
-// use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Entry extends Model
 {
-    // use HasFactory;
 
     protected $fillable = [
         'user_id',
@@ -18,6 +16,26 @@ class Entry extends Model
         'hours',
         'description',
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'user_id' => 'integer',
+            'job_id' => 'integer',
+            'entry_date' => 'datetime',
+            'hours' => 'float',
+        ];
+    }
+
+    /**
+     * Get the user associated with the Entry
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function user(): HasOne
+    {
+        return $this->hasOne(User::class);
+    }
 
     /**
      * Get the user associated with the Entry
