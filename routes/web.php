@@ -21,7 +21,7 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/entry/delete', [EntryController::class, 'delete']);
 
     Route::view('/settings', 'settings')->name('settings');
-    Route::post('/settings', [UserController::class, 'save']);
+    Route::post('/settings', [UserController::class, 'update']);
 
     Route::get('/logout', [AuthController::class, 'logout']);
 });

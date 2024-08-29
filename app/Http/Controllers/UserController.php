@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function save(Request $request) {
+    public function update(Request $request) {
         $request->validate([
             'name' => 'required|filled',
             'email' => 'required|email',
@@ -24,8 +24,14 @@ class UserController extends Controller
             $user->password = Hash::make($request->password);
         }
 
-        $user->save();
+        try {
+            $user->save();
+        } catch (\Throwable $th) {
+            return back()
+                ->withErrors(['Settings could not be modified.']);
+        }
 
-        return back()->withSuccess('Information has been updated.');
+        return back()
+            ->withSuccess('Settings have been updated.');
     }
 }

@@ -9,11 +9,9 @@
 <p class="success">{{ $value }}</p>
 @endsession
 
-@if ($errors->count() > 0)
-  @foreach ($errors->all() as $error)
-    <p class="error">{{ $error }}</p>
-  @endforeach
-@endif
+@foreach ($errors->all() as $error)
+  <p class="error">{{ $error }}</p>
+@endforeach
 
 <form method="POST">
   @csrf
