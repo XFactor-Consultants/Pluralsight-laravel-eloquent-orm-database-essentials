@@ -6,11 +6,9 @@
     $entry = \App\Models\Entry::find($entry_id);
 @endphp
 
-@if ($errors->count() > 0)
-  @foreach ($errors->all() as $error)
-    <p class="error">{{ $error }}</p>
-  @endforeach
-@endif
+@foreach ($errors->all() as $error)
+  <p class="error">{{ $error }}</p>
+@endforeach
 
 <h2>Edit Entry</h2>
 
