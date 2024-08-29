@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EntryController;
+use App\Http\Controllers\JobController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -28,8 +29,14 @@ Route::middleware(['auth'])->group(function() {
 
 Route::middleware(['auth'])->group(function() {
     Route::view('/admin', 'admin')->name('admin');
+
     Route::view('/admin/job', '/admin/job')->name('admin-job');
+    Route::post('/admin/job/add', [JobController::class, 'add']);
+    Route::post('/admin/job/edit', [JobController::class, 'edit']);
+    Route::get('/admin/job/delete', [JobController::class, 'delete']);
+
     Route::view('/admin/user', '/admin/user')->name('admin-user');
+
     Route::view('/admin/entries', '/admin/entries')->name('admin-entries');
 });
 
