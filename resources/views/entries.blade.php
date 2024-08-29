@@ -6,11 +6,9 @@
 <p class="success">{{ $value }}</p>
 @endsession
 
-@if ($errors->count() > 0)
-  @foreach ($errors->all() as $error)
-    <p class="error">{{ $error }}</p>
-  @endforeach
-@endif
+@foreach ($errors->all() as $error)
+  <p class="error">{{ $error }}</p>
+@endforeach
 
 <table>
   <thead>
@@ -26,7 +24,7 @@
     @foreach (Auth::user()->entries()->orderBy('entry_date', 'asc')->get() as $entry)
       <tr>
         <td>{{ $entry->job->name }}</td>
-        <td>{{ $entry->entry_date }}</td>
+        <td>{{ $entry->entry_date->format('m/d/Y') }}</td>
         <td>{{ $entry->hours }}</td>
         <td>{{ $entry->description }}</td>
         <td style="text-align: center">

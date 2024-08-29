@@ -22,7 +22,7 @@ class Entry extends Model
         return [
             'user_id' => 'integer',
             'job_id' => 'integer',
-            'entry_date' => 'datetime',
+            'entry_date' => 'date',
             'hours' => 'float',
         ];
     }
