@@ -36,6 +36,9 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/admin/job/delete', [JobController::class, 'delete']);
 
     Route::view('/admin/user', '/admin/user')->name('admin-user');
+    Route::post('/admin/user/add', [UserController::class, 'add']);
+    Route::post('/admin/user/edit', [UserController::class, 'edit']);
+    Route::get('/admin/user/delete', [UserController::class, 'delete']);
 
     Route::view('/admin/entries', '/admin/entries')->name('admin-entries');
 });
