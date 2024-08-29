@@ -27,6 +27,7 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/logout', [AuthController::class, 'logout']);
 });
 
+// TODO - Make Admin Middleware
 Route::middleware(['auth'])->group(function() {
     Route::view('/admin', 'admin')->name('admin');
 
