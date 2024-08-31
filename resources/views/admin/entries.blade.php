@@ -1,10 +1,12 @@
 @extends('layouts.default')
 @section('title', 'Admin Entries')
 @section('content')
+
 @php
   $userid = request()->get('user');
   $user = \App\Models\User::find($userid);
 @endphp
+
 <h2>Time Entries for {{ $user->name }}</h2>
 
 @session('success')
@@ -22,8 +24,7 @@
       <th>Date</th>
       <th>Hours</th>
       <th>Description</th>
-      <th>Approved</th>
-      <th></th>
+      <th>Approval</th>
     </tr>
   </thead>
   <tbody>
@@ -34,10 +35,12 @@
         <td>{{ $entry->hours }}</td>
         <td>{{ $entry->description }}</td>
         <td style="text-align: center">
-          {!! $entry->approvals->count() > 0 ? '&checkmark;' : '' !!}
-        </td>
-        <td>
-          <a href="/admin/entries?user={{ $userid }}&approve={{ $entry->id}}">Approve</a>
+          @foreach ($entry->approvals as $approval)
+            <div>{{ $approval->approver->name }}</div>
+          @endforeach
+          @if ($entry->approvals->isEmpty())
+            <a href="/admin/entries/approve?id={{ $entry->id}}">Approve</a>
+          @endif
         </td>
       </tr>
     @endforeach

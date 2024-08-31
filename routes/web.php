@@ -42,6 +42,7 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/admin/user/delete', [UserController::class, 'delete']);
 
     Route::view('/admin/entries', '/admin/entries')->name('admin-entries');
+    Route::get('/admin/entries/approve', [EntryController::class, 'approve']);
 });
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');

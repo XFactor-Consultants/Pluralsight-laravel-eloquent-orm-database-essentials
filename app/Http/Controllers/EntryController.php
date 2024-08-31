@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Approval;
 use App\Models\Entry;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -52,5 +53,29 @@ class EntryController extends Controller
         $entry->delete();
 
         return back()->withSuccess('Entry deleted.');
+    }
+
+    public function approve(Request $request) {
+        $request->validate([
+            'id' => 'required|integer|filled',
+        ]);
+
+        $admin = Auth::user()->id;
+
+        if (Approval::where([
+            ['entry_id', $request->id],
+            ['user_id', $admin]
+        ])->exists()) {
+            return back()
+                ->withErrors('You\'ve already approved this entry.');
+        }
+
+        $approval = new Approval();
+        $approval->entry_id = $request->id;
+        $approval->user_id = $admin;
+        $approval->save();
+
+        return back()
+            ->withSuccess('Entry approved.');
     }
 }
