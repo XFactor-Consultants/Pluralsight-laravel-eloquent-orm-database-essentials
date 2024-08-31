@@ -30,7 +30,7 @@
     @foreach ($user->entries as $entry)
       <tr>
         <td>{{ $entry->job->name }}</td>
-        <td>{{ $entry->entry_date }}</td>
+        <td>{{ $entry->entry_date->format('m/d/Y') }}</td>
         <td>{{ $entry->hours }}</td>
         <td>{{ $entry->description }}</td>
         <td style="text-align: center">
