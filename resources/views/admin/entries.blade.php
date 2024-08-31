@@ -6,6 +6,15 @@
   $user = \App\Models\User::find($userid);
 @endphp
 <h2>Time Entries for {{ $user->name }}</h2>
+
+@session('success')
+  <p class="success">{{ $value }}</p>
+@endsession
+
+@foreach ($errors->all() as $error)
+  <p class="error">{{ $error }}</p>
+@endforeach
+
 <table>
   <thead>
     <tr>
