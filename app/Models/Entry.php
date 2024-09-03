@@ -57,4 +57,7 @@ class Entry extends Model
         return $this->hasMany(Approval::class, 'entry_id', 'id');
     }
 
+    public function myApproval() {
+        return $this->approvals()->where('user_id', Auth::user()->id);
+    }
 }

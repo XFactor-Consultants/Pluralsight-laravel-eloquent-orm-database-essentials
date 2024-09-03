@@ -38,7 +38,7 @@
           @foreach ($entry->approvals as $approval)
             <div>{{ $approval->approver->name }}</div>
           @endforeach
-          @if ($entry->approvals->isEmpty())
+          @if ($entry->myApproval->isEmpty())
             <a href="/admin/entries/approve?id={{ $entry->id}}">Approve</a>
           @endif
         </td>
