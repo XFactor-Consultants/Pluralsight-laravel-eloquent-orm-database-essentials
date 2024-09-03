@@ -14,7 +14,7 @@
   <p class="error">{{ $error }}</p>
 @endforeach
 
-<form method="POST" action="/admin/user/{{ $action }}">
+<form method="POST" action="/admin/job/{{ $action }}">
   @csrf
   <input type="hidden" name="id" value="{{ isset($job) ? $job->id : old('id') }}">
   <label>
